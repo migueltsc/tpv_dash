@@ -20,7 +20,7 @@ import {
   Typography,
   Toolbar,
 } from "@mui/material";
-import UserForm from "./";
+import UserForm from "./UserForm";
 import DeleteConfirmationModal from "../DeleteConfirmationModal";
 import UserSearch from "./UserSearch";
 import UserPagination from "./UserPagination";
