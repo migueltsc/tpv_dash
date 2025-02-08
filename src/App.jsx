@@ -1,34 +1,31 @@
 // src/App.jsx
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Importa Routes y Route
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import useAuth from "./hooks/useAuth";
 import MainLayout from "./components/layout/MainLayout";
 import UserTable from "./components/users/UserTable";
-// import RolesTable from "./components/roles/RolesTable"; // Si tuvieras un componente RolesTable, importalo aquí
+import RolesTable from "./components/roles/RolesTable"; // Importa RolesTable
 import "./App.css";
 import { ThemeProvider, Typography } from "@mui/material";
 import theme from "./theme";
 
 const App = () => {
-  // Ya no necesitamos el estado selectedTable ni handleTableSelect
-  // const [selectedTable, setSelectedTable] = useState(null);
-  // const handleTableSelect = (table) => {
-  //   setSelectedTable(table);
-  // };
-
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <MainLayout /* onTableSelect={handleTableSelect} Ya no es necesario */>
-          <Routes> {/* Envuelve tus Route dentro de Routes */}
-            <Route path="/" element={ // Ruta por defecto (/)
-              <Typography variant="h6" component="div">
-                Selecciona una tabla del menú
-              </Typography>
-            } />
-            <Route path="/users" element={<UserTable />} /> {/* Ruta para la tabla de usuarios */}
-            {/* <Route path="/roles" element={<RolesTable />} /> */} {/* Ruta para la tabla de roles (si la tuvieras) */}
-            {/* Puedes añadir más rutas aquí para otras tablas (productos, etc.) */}
+        <MainLayout>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Typography variant="h6" component="div">
+                  Selecciona una tabla del menú
+                </Typography>
+              }
+            />
+            <Route path="/users" element={<UserTable />} />
+            <Route path="/roles" element={<RolesTable />} /> {/* Ruta para la tabla de Roles */}
+            <Route path="/roles/:id" element={<RolesTable />} /> {/* **Nueva ruta para editar un rol específico** */}
           </Routes>
         </MainLayout>
       </Router>

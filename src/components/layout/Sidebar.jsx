@@ -10,7 +10,7 @@ import {
   Box,
   Collapse,
 } from "@mui/material";
-import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
+import { Link } from "react-router-dom";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
@@ -19,14 +19,9 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import useAuth from "../../hooks/useAuth";
 import "./Sidebar.css";
 
-const Sidebar = ({ open, onClose /*, onTableSelect  Ya no necesitamos onTableSelect */ }) => { // Elimina onTableSelect de las props
+const Sidebar = ({ open, onClose }) => {
   const { user } = useAuth();
   const [openAuth, setOpenAuth] = useState(true);
-
-  // const handleTableSelect = (table) => {  Ya no necesitamos handleTableSelect
-  //   onTableSelect(table);
-  //   onClose(); // Cerrar el sidebar después de seleccionar una tabla
-  // };
 
   const handleClickAuth = () => {
     setOpenAuth(!openAuth);
@@ -82,12 +77,18 @@ const Sidebar = ({ open, onClose /*, onTableSelect  Ya no necesitamos onTableSel
                   {menuItems.map((menuGroup) => (
                     <React.Fragment key={menuGroup.group}>
                       {menuGroup.items.map((item) => (
-                        <ListItem key={item.text} disablePadding> {/* Cambia ListItemButton por ListItem y envuelve con Link */}
-                          <Link to={`/${item.value}`} style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}> {/* Usa Link para la navegación */}
+                        <ListItem key={item.text} disablePadding>
+                          <Link
+                            to={`/${item.value}`}
+                            style={{
+                              textDecoration: "none",
+                              color: "inherit",
+                              width: "100%",
+                            }}
+                          >
                             <ListItemButton
                               sx={{ pl: 4 }}
-                              onClick={onClose} // Cerrar el sidebar al hacer clic en un enlace
-                              /* onClick={() => handleTableSelect(item.value)} Ya no necesitamos handleTableSelect */
+                              onClick={onClose}
                             >
                               <ListItemIcon>{item.icon}</ListItemIcon>
                               <ListItemText primary={item.text} />
