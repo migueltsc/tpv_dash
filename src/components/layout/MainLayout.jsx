@@ -6,7 +6,7 @@ import TopBar from "./TopBar";
 import useAuth from "../../hooks/useAuth";
 import LoginForm from "../auth/LoginForm";
 
-const MainLayout = ({ children, onTableSelect }) => {
+const MainLayout = ({ children /*, onTableSelect Ya no necesitamos onTableSelect */ }) => { // Elimina onTableSelect de las props
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const { user, logout, login } = useAuth();
 
@@ -24,11 +24,11 @@ const MainLayout = ({ children, onTableSelect }) => {
       <Sidebar
         open={sidebarVisible}
         onClose={toggleSidebar}
-        onTableSelect={onTableSelect}
+        /* onTableSelect={onTableSelect} Ya no necesitamos onTableSelect */
       />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-        {user ? children : <LoginForm onSubmit={handleLogin} />}
+        {user ? children : <LoginForm onSubmit={handleLogin} />} {/* Renderiza children (que serán los componentes de las rutas) */}
       </Box>
     </Box>
   );
