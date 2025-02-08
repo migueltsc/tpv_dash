@@ -1,0 +1,21 @@
+.inputWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+.error {
+  border-color: red;
+}

@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+}
+
+.menuButton {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 102; /* Asegura que el botón esté encima del sidebar */
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: block; /* Mostrar por defecto en todos los tamaños */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  position: fixed; /* Siempre fixed */
+  top: 0;
+  left: 0;
+  transform: translateX(-100%); /* Ocultar por defecto */
+  transition: transform 0.3s ease-in-out;
+  z-index: 101;
+}
+
+.content {
+  flex: 1; /* El contenido ocupa el espacio restante */
+  padding: 20px;
+  padding-top: 60px; /* Ajustar el padding para que el contenido no quede debajo del menuButton */
+}
+
+.sidebarVisible {
+  transform: translateX(0); /* Mostrar el sidebar */
+}

@@ -1,0 +1,13 @@
+.sidebar {
+  background-color: #222;
+  color: white;
+  padding: 20px;
+}
+.logo {
+  margin-bottom: 20px;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
